@@ -1,18 +1,20 @@
-import '../App.css';
+import "../style.css";
 import React from "react";
-// import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './Header';
 import Landing from './Landing';
+import StateSelection from './StateSelection';
+import SelectState from './ss';
 
 function App() {
   return (
     <div className="App">
-      {/* <BrowserRouter> */}
+      <BrowserRouter>
       <Header />
-      {/* <Switch>
-        <Route exact path="/" component={Landing} />
-      </Switch> */}
-      {/* </BrowserRouter> */}
+      <Switch>
+        <Route exact path="/" component={SelectState} />
+      </Switch>
+      </BrowserRouter>
     </div>
   );
 }

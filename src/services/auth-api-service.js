@@ -1,6 +1,30 @@
 import config from '../config';
 
 const AuthApiService = {
+  getState(db, user_id){
+    return db
+      .from('states')
+      .select(
+
+      )
+  },
+  getStates(states) {
+    return fetch(`${config.API_ENDPOINT}/api/states`, {
+        method: 'GET',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(states),
+      })
+      .then(res =>
+      (!res.ok) ?
+      res.json().then(e => Promise.reject(e)) :
+      res.json()
+      )
+      .catch(err => {
+        console.log('error:', err)
+      })
+  },
   // login user
   postLogin(credentials) {
     return fetch(`${config.API_ENDPOINT}/auth/login`, {
@@ -39,8 +63,8 @@ const AuthApiService = {
       })
   },
   // save combination of music
-  postMusic(music) {
-    return fetch(`${config.API_ENDPOINT}/api/music`, {
+  postStates(music) {
+    return fetch(`${config.API_ENDPOINT}/api/states`, {
         method: 'POST',
         headers: {
           'content-type': 'application/json',
