@@ -8,7 +8,7 @@ import * as States from '../media/states'
 
 function ListOfStates(props) {
     return (
-            <option value={props.state}>{props.state}</option>
+            <option key={props.state} value={props.state}>{props.state}</option>
     )
 }
 
@@ -72,8 +72,9 @@ class StateSelector extends React.Component {
 
     //create functions that will display appropriate State for selected state
     handleChange(e){
+        console.log(e.currentTarget.value)
         this.setState({ currentState: e.currentTarget.value})
-        console.log(this.context)
+        // console.log(this.context)
         // console.log(`${this.state.currentState}`)
         // console.log(this.state)
         // console.log(this.state.allStates[0].state)
@@ -102,8 +103,9 @@ class StateSelector extends React.Component {
           return null;
     
         const State = States[selected];
+        console.log(this.state.currentState)
     
-        return <State />;
+        return <State stateName={this.state.currentState}/>;
       }
 
     // handleDynamicSelect(){
