@@ -12,7 +12,7 @@ function ListOfStates(props) {
     )
 }
 
-class SelectState extends React.Component {
+class StateSelector extends React.Component {
     static contextType = ApiContext;
 
     constructor(props) {
@@ -45,7 +45,7 @@ class SelectState extends React.Component {
     }
 
     componentDidMount() {
-        console.log(`${config.API_ENDPOINT}/states`)
+        // console.log(`${config.API_ENDPOINT}/states`)
         // this.separateStates(this.state.allStates)
         return fetch(`${config.API_ENDPOINT}/states`, {
             method: 'GET',
@@ -73,10 +73,11 @@ class SelectState extends React.Component {
     //create functions that will display appropriate State for selected state
     handleChange(e){
         this.setState({ currentState: e.currentTarget.value})
-        console.log(`${this.state.currentState}`)
-        console.log(this.state)
-        console.log(this.state.allStates[0].state)
-        console.log(States)
+        console.log(this.context)
+        // console.log(`${this.state.currentState}`)
+        // console.log(this.state)
+        // console.log(this.state.allStates[0].state)
+        // console.log(States)
     }
     handleSubmit = (e) => {
         e.preventDefault();
@@ -130,4 +131,4 @@ class SelectState extends React.Component {
     }
 }
 
-export default SelectState;
+export default StateSelector;

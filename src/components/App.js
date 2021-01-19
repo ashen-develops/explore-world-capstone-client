@@ -3,8 +3,8 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './Header';
 import Landing from './Landing';
-import StateSelection from './StateSelection';
-import SelectState from './ss';
+import StateSelector from './StateSelector'
+import SignUp from './SignUp'
 
 function App() {
   return (
@@ -12,7 +12,9 @@ function App() {
       <BrowserRouter>
       <Header />
       <Switch>
-        <Route exact path="/" component={SelectState} />
+        <Route exact path="/" component={Landing} />
+        <Route path="/select" component={StateSelector} />
+        <Route path="/signup" component={SignUp} />
       </Switch>
       </BrowserRouter>
     </div>
