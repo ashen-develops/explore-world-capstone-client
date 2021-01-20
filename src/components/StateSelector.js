@@ -45,8 +45,6 @@ class StateSelector extends React.Component {
     }
 
     componentDidMount() {
-        // console.log(`${config.API_ENDPOINT}/states`)
-        // this.separateStates(this.state.allStates)
         return fetch(`${config.API_ENDPOINT}/states`, {
             method: 'GET',
             headers: {
@@ -74,11 +72,6 @@ class StateSelector extends React.Component {
     handleChange(e){
         console.log(e.currentTarget.value)
         this.setState({ currentState: e.currentTarget.value})
-        // console.log(this.context)
-        // console.log(`${this.state.currentState}`)
-        // console.log(this.state)
-        // console.log(this.state.allStates[0].state)
-        // console.log(States)
     }
     handleSubmit = (e) => {
         e.preventDefault();
@@ -91,13 +84,7 @@ class StateSelector extends React.Component {
         });
         return <select id="stateSelect" name="stateSelect" onChange={e => this.handleChange(e)}>{result}</select>
     }
-    // component(select){
-    //     let MyComponent = this.state.currentState
-    //     if(this.state.currentState){
-    //         return jsxToString(<div><MyComponent /></div>)
-    //     }
-    //     else { return null }
-    // }
+
     renderSelectedState(selected) {
         if (!selected)
           return null;
@@ -108,13 +95,9 @@ class StateSelector extends React.Component {
         return <State stateName={this.state.currentState}/>;
       }
 
-    // handleDynamicSelect(){
-    //     //if statement to match current state with state.state from fetch, then populate with cities attached to that state
-    //     if (this.state.currentState === )
-    // }
 
     render(){
-        // let MyComponent = this.state.currentState
+
         return(
             <div>
                 <h2>Choose Your Desired State</h2>
@@ -122,12 +105,10 @@ class StateSelector extends React.Component {
                     {this.state.allStates
                     ? this.generateStateSelect(this.state.justStates)
                     : null}
+                    <div>
+                        {this.renderSelectedState(this.state.currentState)}
+                    </div>
                 </form>
-                <div>
-                    {this.renderSelectedState(this.state.currentState)}
-                    {/* {this.state.currentState ? <MyComponent /> : <Texas />} */}
-                    {/* <MyComponent /> */}
-                </div>
             </div>
         )
     }

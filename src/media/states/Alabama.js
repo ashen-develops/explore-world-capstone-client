@@ -92,7 +92,6 @@ class Alabama extends React.Component {
     render(){
         return(
             <div>
-                {this.props.stateName}
                 {/* once currentState is defined in state, this should work */}
                 {this.props.stateName
                 ? this.generateCitySelect(this.state.justCities)
