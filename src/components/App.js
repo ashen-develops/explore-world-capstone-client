@@ -5,6 +5,7 @@ import Header from './Header';
 import Landing from './Landing';
 import StateSelector from './StateSelector'
 import SignUp from './SignUp'
+import CityInfo from './CityInfo'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route exact path="/" component={Landing} />
         <Route path="/select" component={StateSelector} />
         <Route path="/signup" component={SignUp} />
+        <Route path="/info" component={CityInfo} />
       </Switch>
       </BrowserRouter>
     </div>

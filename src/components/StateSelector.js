@@ -1,9 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import ApiContext from '../ApiContext';
 import config from '../config'
-import jsxToString from 'jsx-to-string';
-import AuthApiService from '../services/auth-api-service'
 import * as States from '../media/states'
 
 function ListOfStates(props) {
@@ -13,7 +9,6 @@ function ListOfStates(props) {
 }
 
 class StateSelector extends React.Component {
-    static contextType = ApiContext;
 
     constructor(props) {
         super(props);
@@ -82,7 +77,7 @@ class StateSelector extends React.Component {
         states.forEach((state) => {
             result.push(<ListOfStates state={state} />)
         });
-        return <select id="stateSelect" name="stateSelect" onChange={e => this.handleChange(e)}>{result}</select>
+        return result
     }
 
     renderSelectedState(selected) {
@@ -92,7 +87,7 @@ class StateSelector extends React.Component {
         const State = States[selected];
         console.log(this.state.currentState)
     
-        return <State stateName={this.state.currentState}/>;
+        return <State className={this.state.currentState.toLowerCase()} stateName={this.state.currentState}/>;
       }
 
 
@@ -102,13 +97,18 @@ class StateSelector extends React.Component {
             <div>
                 <h2>Choose Your Desired State</h2>
                 <form onSubmit={this.test}>
-                    {this.state.allStates
-                    ? this.generateStateSelect(this.state.justStates)
-                    : null}
-                    <div>
-                        {this.renderSelectedState(this.state.currentState)}
-                    </div>
+                    <select id="stateSelect" name="stateSelect" onChange={e => this.handleChange(e)}>
+                        <option key="..." value="...">...</option>
+                        {this.state.allStates
+                        ? this.generateStateSelect(this.state.justStates)
+                        : null}
+                    </select>
                 </form>
+                <div>
+                    {this.renderSelectedState(this.state.currentState)}
+                </div>
+                {/* <button type="submit">Submit</button> */}
+
             </div>
         )
     }

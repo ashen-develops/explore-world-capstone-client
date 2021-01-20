@@ -1,5 +1,6 @@
 import React from 'react';
 import ApiContext from '../../ApiContext';
+import CityInfo from '../../components/CityInfo';
 import config from '../../config'
 
 function ListOfCities(props) {
@@ -20,21 +21,21 @@ class Hawaii extends React.Component {
             allStates: [],
             stateObj: [],
             justCities: [],
+            currentCity: null,
             setStates: () => {}
         }
     }
     handleChange(e){
-        this.setState({ currentState: e.currentTarget.value})
-        console.log(`${this.state.currentState}`)
-        console.log(this.state)
-        console.log(this.state.allStates[0].city)
+        this.setState({ currentCity: e.currentTarget.value});
+        console.log(this.state.currentCity)
     }
+
     generateCitySelect(cities) {
         let result = [];
         cities.forEach((city) => {
             result.push(<ListOfCities city={city} />)
         });
-        return <select id="citySelect" name="citySelect" onChange={e => this.handleChange(e)}>{result}</select>
+        return result
     }
 
     setStates = (states) => {
@@ -57,7 +58,7 @@ class Hawaii extends React.Component {
         let result = [];
         cities.forEach((city) => {
             result.push(city.city)
-            console.log(this.state)
+            // console.log(this.state)
         });
         return this.setState({ justCities: result })
     }
@@ -80,25 +81,50 @@ class Hawaii extends React.Component {
             //   console.log(resJson)
               this.setStates(resJson)
               this.seperateCurrentStateObj(this.state.allStates);
-              console.log("before", this.state)
+            //   console.log("before", this.state)
               this.setCities(this.state.stateObj)
-              console.log("after", this.state)
+              console.log(this.state.justCities)
+            //   console.log("after", this.state)
           })
           .catch(err => {
             console.log('error:', err)
           })     
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault()
+        window.location="/info"
+    }
+
+    renderCityInfo(){
+        if (this.state.currentCity === null){
+            return <p>Pick a City to see find some new places to go!</p>
+        }
+        else if (this.state.currentCity === '...'){
+            return <p>Pick a City to see find some new places to go!</p>
+        }
+        else {
+            return <CityInfo currentCity={this.state.currentCity} />
+        }
+    }
+
     render(){
         return(
             <div>
-                {/* once currentState is defined in state, this should work */}
-                {this.props.stateName
-                ? this.generateCitySelect(this.state.justCities)
-                : null}
+                <select id="citySelect" name="citySelect" onChange={e => this.handleChange(e)}>
+                    {this.props.stateName
+                    ? <option key="..." value="...">...</option>
+                    : null}
+                    {/* once currentState is defined in state, this should work */}
+                    {this.props.stateName
+                    ? this.generateCitySelect(this.state.justCities)
+                    : null}
+                </select>
                 <aside>
-        <svg xmlns="http://www.w3.org/2000/svg"><path className="cls-1" d="M27.75,13.08a1.64,1.64,0,0,0,.93,1.65,5.14,5.14,0,0,1,1.63,2.13c.3.5-.07.8-.4,1A29.55,29.55,0,0,0,25.74,20c-.55.4-1.08-.09-1.2-.72-.27-1.59-.72-3.16-.27-4.81.24-.9.5-1.55,1.62-1.3a2.5,2.5,0,0,0,.71-.06A1.58,1.58,0,0,0,27.75,13.08Z"/><path className="cls-1" d="M20.94,8.85c.61,0,1.23.11,1.29.79s-.57.63-1,.62A1.12,1.12,0,0,1,20,9.19C20,8.63,20.64,9,20.94,8.85Z"/><path className="cls-1" d="M10.85,5.93c-.47,0-.93,0-.94-.63a1,1,0,0,1,1-1.12c.53,0,.68.71.77,1.16S11.26,5.93,10.85,5.93Z"/><path className="cls-1" d="M2.36,1.18c-.08.54-.37.91-.93.89A.86.86,0,0,1,.5,1.19C.49.7.82.49,1.28.5S2.25.55,2.36,1.18Z"/><path className="cls-1" d="M16.89,9c.56.16,1.12.24,1.26.83.09.39-.23.44-.52.45a1,1,0,0,1-1-.81C16.57,9.24,16.62,9,16.89,9Z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg"><path className="cls-1" d="M27.75,13.08a1.64,1.64,0,0,0,.93,1.65,5.14,5.14,0,0,1,1.63,2.13c.3.5-.07.8-.4,1A29.55,29.55,0,0,0,25.74,20c-.55.4-1.08-.09-1.2-.72-.27-1.59-.72-3.16-.27-4.81.24-.9.5-1.55,1.62-1.3a2.5,2.5,0,0,0,.71-.06A1.58,1.58,0,0,0,27.75,13.08Z"/><path className="cls-1" d="M20.94,8.85c.61,0,1.23.11,1.29.79s-.57.63-1,.62A1.12,1.12,0,0,1,20,9.19C20,8.63,20.64,9,20.94,8.85Z"/><path className="cls-1" d="M10.85,5.93c-.47,0-.93,0-.94-.63a1,1,0,0,1,1-1.12c.53,0,.68.71.77,1.16S11.26,5.93,10.85,5.93Z"/><path className="cls-1" d="M2.36,1.18c-.08.54-.37.91-.93.89A.86.86,0,0,1,.5,1.19C.49.7.82.49,1.28.5S2.25.55,2.36,1.18Z"/><path className="cls-1" d="M16.89,9c.56.16,1.12.24,1.26.83.09.39-.23.44-.52.45a1,1,0,0,1-1-.81C16.57,9.24,16.62,9,16.89,9Z"/></svg>
                 </aside>
+                {/* <button onClick={this.handleSubmit}>Submit</button> */}
+                {this.renderCityInfo()}
             </div>
         )
     }
