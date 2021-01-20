@@ -54,6 +54,11 @@ header h1 {
   height: 100%;
 }
 
+.stateSVG {
+  height: 75px;
+  width: 75px;
+}
+
 /*-------------------------------------- STATES ----------------------------------- */
 .alabama {
   position: absolute;
