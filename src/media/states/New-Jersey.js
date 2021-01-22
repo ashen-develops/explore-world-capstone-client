@@ -110,7 +110,7 @@ class NewJersey extends React.Component {
 
     render(){
         return(
-            <div>
+            <div className="mainInfo">
                 <select id="citySelect" name="citySelect" onChange={e => this.handleChange(e)}>
                     {this.props.stateName
                     ? <option key="..." value="...">...</option>
@@ -121,7 +121,7 @@ class NewJersey extends React.Component {
                     : null}
                 </select>
                 <aside>
-                    <svg className="stateSVG" xmlns="http://www.w3.org/2000/svg"><path className="cls-1" d="M6.05,11.45a9,9,0,0,1-1,2.76c-.16.43-.44.6-1,.47A9.84,9.84,0,0,1,1.24,13.4a1.87,1.87,0,0,1-.43-2.55,10.41,10.41,0,0,1,2-2.2c.73-.6.81-1.13.05-1.74-.13-.09-.22-.23-.35-.32C1.78,6.11.94,5.74.82,4.72a6.49,6.49,0,0,1,.55-3.5A1,1,0,0,1,2.88.69c.91.48,1.83,1,2.76,1.4A.65.65,0,0,1,6,3a11.1,11.1,0,0,1-.52,1.57C5.21,5.1,5,5.72,6,6s.8,1.21.54,2c-.45-.09-1.1-.75-1.21.28-.1.86,0,1.73,0,2.6C5.32,11.44,5.7,11.4,6.05,11.45Z"/></svg>
+                    <svg className="stateSVG" xmlns="http://www.w3.org/2000/svg"  viewBox="-25 -25 75 75"><path className="cls-1" d="M6.05,11.45a9,9,0,0,1-1,2.76c-.16.43-.44.6-1,.47A9.84,9.84,0,0,1,1.24,13.4a1.87,1.87,0,0,1-.43-2.55,10.41,10.41,0,0,1,2-2.2c.73-.6.81-1.13.05-1.74-.13-.09-.22-.23-.35-.32C1.78,6.11.94,5.74.82,4.72a6.49,6.49,0,0,1,.55-3.5A1,1,0,0,1,2.88.69c.91.48,1.83,1,2.76,1.4A.65.65,0,0,1,6,3a11.1,11.1,0,0,1-.52,1.57C5.21,5.1,5,5.72,6,6s.8,1.21.54,2c-.45-.09-1.1-.75-1.21.28-.1.86,0,1.73,0,2.6C5.32,11.44,5.7,11.4,6.05,11.45Z"/></svg>
                 </aside>
                 {/* <button onClick={this.handleSubmit}>Submit</button> */}
                 {this.renderCityInfo()}

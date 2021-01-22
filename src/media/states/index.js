@@ -15,6 +15,7 @@ export {default as Indiana} from './Indiana';
 export {default as Iowa} from './Iowa';
 export {default as Kansas} from './Kansas';
 export {default as Kentucky} from './Kentucky';
+export {default as Louisiana} from './Louisiana'
 export {default as Maine} from './Maine';
 export {default as Maryland} from './Maryland';
 export {default as Massachusetts} from './Massachusetts';

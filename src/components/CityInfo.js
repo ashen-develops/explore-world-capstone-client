@@ -5,12 +5,21 @@ class CityInfo extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentState: null,
             error: '',
-            allStates: [],
-            just: [],
-            justStates: [],
+            cityObject: {},
+            bcbsLink: "placeholder",
+            blffsLink: "placeholder",
+            bdfsLink: "placeholder",
+            bosLink: "placeholder",
         }
+    }
+
+    seperateCurrentCityObj(cityObjs) {
+        cityObjs.forEach((cityObj) => {
+            if (this.props.currentCity === cityObj.city){
+                return this.setState({ cityObject: cityObj })
+            }
+        })
     }
 
     // On component mount have all state info go into allStates
@@ -27,24 +36,119 @@ class CityInfo extends React.Component {
             res.json()
           )
           .then((resJson) => {
-              console.log(resJson)
-              this.setStates(resJson)
-              this.separateStates(this.state.allStates)
-              this.removeDuplicates()
+            console.log(resJson)
+            this.seperateCurrentCityObj(resJson)
+            this.setBcbsLink()
+            this.setBdfsLink()
+            this.setBosLink()
+            this.setBlffsLink()
           })
           .catch(err => {
             console.log('error:', err)
           })
           
     }
-    // For each set of state info separate each question and link into a HTML function
-    // setState for every event and link if props.currentCity === allStates.city (forEach) then render the info 
+    setBcbsLink() {
+        if(this.state.bcbsLink.includes("http")){
+            return this.setState({ bcbsLink: this.state.cityObject["bcbs-link"].replace(" ", "")})
+        }
+        else{
+            return this.setState({ bcbsLink: this.state.cityObject["bcbs-link"]})
+        }
+    }
+    setBdfsLink() {
+        if(this.state.bdfsLink.includes("http")){
+            return this.setState({ bdfsLink: this.state.cityObject["bdfs-link"].replace(" ", "")})
+        }
+        else{
+            return this.setState({ bdfsLink: this.state.cityObject["bdfs-link"] })
+        }
+    }
+    setBosLink() {
+        if(this.state.bosLink.includes("https")){
+            return this.setState({ bosLink: this.state.cityObject["bos-link"].replace(" ", "")})
+        }
+        else{
+            return this.setState({ bosLink: this.state.cityObject["bos-link"] })
+        }
+    }
+    setBlffsLink() {
+        if(this.state.blffsLink.includes("http")){
+            return this.setState({ blffsLink: this.state.cityObject["blffs-link"].replace(" ", "")})
+        }
+        else{
+            return this.setState({ blffsLink: this.state.cityObject["blffs-link"] })
+        }
+    }
+    bcbsAddressVSHtml(){
+        if(this.state.bcbsLink.includes("http")){
+            return <a target="_blank" rel="noreferrer" href={this.state.bcbsLink.replace(" ", "")}>{this.state.cityObject["best-cheap-beer-spot"]}</a>
+        }
+        else {
+            return(
+                <div>
+                    <p>{this.state.cityObject["best-cheap-beer-spot"]}</p>
+                    <p>Address: <span>{this.state.bcbsLink}</span></p>
+                </div>
+            ) 
+        }
+    }
+    bdfsAddressVSHtml(){
+        if(this.state.bdfsLink.includes("http")){
+            return <a target="_blank" rel="noreferrer" href={this.state.bdfsLink.replace(" ", "")}>{this.state.cityObject["best-dog-friendly-spot"]}</a>
+        }
+        else {
+            return(
+                <div>
+                    <p>{this.state.cityObject["best-dog-friendly-spot"]}</p>
+                    <p>Address: <span>{this.state.bdfsLink}</span></p>
+                </div>
+            ) 
+        }
+    }
+    bosAddressVSHtml(){
+        if(this.state.bosLink.includes("http")){
+            return <a target="_blank" rel="noreferrer" href={this.state.bosLink.replace(" ", "")}>{this.state.cityObject["best-outdoorsy-spot"]}</a>
+        }
+        else {
+            return(
+                <div>
+                    <p>{this.state.cityObject["best-outdoorsy-spot"]}</p>
+                    <p>Address: <span>{this.state.bosLink}</span></p>
+                </div>
+            ) 
+        }
+    }
+    blffsAddressVSHtml(){
+        if(this.state.blffsLink.includes("http")){
+            return <a target="_blank" rel="noreferrer" href={this.state.blffsLink.replace(" ", "")}>{this.state.cityObject["best-local-fast-food-spot"]}</a>
+        }
+        else {
+            return(
+                <div>
+                    <p>{this.state.cityObject["best-local-fast-food-spot"]}</p>
+                    <p>Address: <span>{this.state.blffsLink}</span></p>
+                </div>
+            ) 
+        }
+    }
 
     render() {
-        console.log(this.props.currentCity)
         return(
             <div>
-                <h2>{this.props.currentCity}</h2>
+                <h2>Stuff To Do in, {this.props.currentCity}</h2>
+                <h3>Best Cheap Beer Spot</h3>
+                {this.bcbsAddressVSHtml()}
+                {/* <a target="_blank" rel="noreferrer" href={this.state.bcbsLink}>{this.state.cityObject["best-cheap-beer-spot"]}</a> */}
+                <h3>Best Dog Friendly Spot</h3>
+                {this.bdfsAddressVSHtml()}
+                {/* <a target="_blank" rel="noreferrer" href={this.state.bdfsLink}>{this.state.cityObject["best-dog-friendly-spot"]}</a> */}
+                <h3>Best Outdoorsy Spot</h3>
+                {this.bosAddressVSHtml()}
+                {/* <a target="_blank" rel="noreferrer" href={this.state.bosLink}>{this.state.cityObject["best-outdoorsy-spot"]}</a> */}
+                <h3>Best Local Fast Food Spot</h3>
+                {this.blffsAddressVSHtml()}
+                {/* <a target="_blank" rel="noreferrer" href={this.state.blffsLink}>{this.state.cityObject["best-local-fast-food-spot"]}</a> */}
             </div>
         )
     }

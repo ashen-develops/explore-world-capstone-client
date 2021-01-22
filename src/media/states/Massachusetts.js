@@ -110,7 +110,7 @@ class Massachusetts extends React.Component {
 
     render(){
         return(
-            <div>
+            <div className="mainInfo">
                 <select id="citySelect" name="citySelect" onChange={e => this.handleChange(e)}>
                     {this.props.stateName
                     ? <option key="..." value="...">...</option>
@@ -121,7 +121,7 @@ class Massachusetts extends React.Component {
                     : null}
                 </select>
                 <aside>
-                    <svg className="stateSVG" xmlns="http://www.w3.org/2000/svg"><path className="cls-1" d="M6.55,1.94A14.31,14.31,0,0,0,11.31.66c.42-.17.83-.31,1.18.16s.66.74.46,1.37c-.68,2.16-.66,2.17,1.19,3.67.62.5,1,1.26,1.82,1.52a.31.31,0,0,1,.22.37c0,.19-.2.23-.36.26a3.12,3.12,0,0,0-.93.14c-1.52.76-1.56.8-2.47-.55A2.38,2.38,0,0,0,9.48,6.4c-2.75.48-5.24,1.71-7.95,2.17-.61.1-.79-.31-.82-.76,0-.71-.15-1.42-.2-2.13C.4,4,1.19,3.39,3.5,3.23Z"/></svg>
+                    <svg className="stateSVG" xmlns="http://www.w3.org/2000/svg"  viewBox="-25 -25 75 75"><path className="cls-1" d="M6.55,1.94A14.31,14.31,0,0,0,11.31.66c.42-.17.83-.31,1.18.16s.66.74.46,1.37c-.68,2.16-.66,2.17,1.19,3.67.62.5,1,1.26,1.82,1.52a.31.31,0,0,1,.22.37c0,.19-.2.23-.36.26a3.12,3.12,0,0,0-.93.14c-1.52.76-1.56.8-2.47-.55A2.38,2.38,0,0,0,9.48,6.4c-2.75.48-5.24,1.71-7.95,2.17-.61.1-.79-.31-.82-.76,0-.71-.15-1.42-.2-2.13C.4,4,1.19,3.39,3.5,3.23Z"/></svg>
                 </aside>
                 {/* <button onClick={this.handleSubmit}>Submit</button> */}
                 {this.renderCityInfo()}

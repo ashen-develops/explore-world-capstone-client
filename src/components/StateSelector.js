@@ -83,8 +83,8 @@ class StateSelector extends React.Component {
     renderSelectedState(selected) {
         if (!selected)
           return null;
-    
-        const State = States[selected];
+        
+        const State = States[selected.replace(" ", "")];
         console.log(this.state.currentState)
     
         return <State className={this.state.currentState.toLowerCase()} stateName={this.state.currentState}/>;
@@ -95,19 +95,20 @@ class StateSelector extends React.Component {
 
         return(
             <div>
-                <h2>Choose Your Desired State</h2>
-                <form onSubmit={this.test}>
-                    <select id="stateSelect" name="stateSelect" onChange={e => this.handleChange(e)}>
-                        <option key="..." value="...">...</option>
-                        {this.state.allStates
-                        ? this.generateStateSelect(this.state.justStates)
-                        : null}
-                    </select>
-                </form>
-                <div>
-                    {this.renderSelectedState(this.state.currentState)}
-                </div>
-                {/* <button type="submit">Submit</button> */}
+                <main>
+                    <h2>Choose Your Desired State</h2>
+                    <div className="selectBoxes">
+                        <select id="stateSelect" name="stateSelect" onChange={e => this.handleChange(e)}>
+                            <option key="..." value="...">...</option>
+                            {this.state.allStates
+                            ? this.generateStateSelect(this.state.justStates)
+                            : null}
+                        </select>
+                        <div>
+                            {this.renderSelectedState(this.state.currentState)}
+                        </div>
+                    </div>
+                </main>
 
             </div>
         )
