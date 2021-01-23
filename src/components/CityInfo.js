@@ -7,6 +7,7 @@ class CityInfo extends React.Component {
         this.state = {
             error: '',
             cityObject: {},
+            cityObjectResults: [],
             bcbsLink: "placeholder",
             blffsLink: "placeholder",
             bdfsLink: "placeholder",
@@ -37,6 +38,7 @@ class CityInfo extends React.Component {
           )
           .then((resJson) => {
             console.log(resJson)
+            this.setState({ cityObjectResults: resJson })
             this.seperateCurrentCityObj(resJson)
             this.setBcbsLink()
             this.setBdfsLink()
@@ -48,6 +50,19 @@ class CityInfo extends React.Component {
           })
           
     }
+
+    //CREATE A COMPONENT DID UPDATE HERE FOR WHEN CITY IS CHANGED WITHOUT STATE
+    componentDidUpdate(prevProps) {
+        if (prevProps.currentCity !== this.props.currentCity) {
+            this.seperateCurrentCityObj(this.state.cityObjectResults)
+            this.setBcbsLink()
+            this.setBdfsLink()
+            this.setBosLink()
+            this.setBlffsLink()
+        }
+    }
+
+
     setBcbsLink() {
         if(this.state.bcbsLink.includes("http")){
             return this.setState({ bcbsLink: this.state.cityObject["bcbs-link"].replace(" ", "")})
@@ -139,16 +154,16 @@ class CityInfo extends React.Component {
                 <h2>Stuff To Do in, {this.props.currentCity}</h2>
                 <h3>Best Cheap Beer Spot</h3>
                 {this.bcbsAddressVSHtml()}
-                {/* <a target="_blank" rel="noreferrer" href={this.state.bcbsLink}>{this.state.cityObject["best-cheap-beer-spot"]}</a> */}
+
                 <h3>Best Dog Friendly Spot</h3>
                 {this.bdfsAddressVSHtml()}
-                {/* <a target="_blank" rel="noreferrer" href={this.state.bdfsLink}>{this.state.cityObject["best-dog-friendly-spot"]}</a> */}
+
                 <h3>Best Outdoorsy Spot</h3>
                 {this.bosAddressVSHtml()}
-                {/* <a target="_blank" rel="noreferrer" href={this.state.bosLink}>{this.state.cityObject["best-outdoorsy-spot"]}</a> */}
+
                 <h3>Best Local Fast Food Spot</h3>
                 {this.blffsAddressVSHtml()}
-                {/* <a target="_blank" rel="noreferrer" href={this.state.blffsLink}>{this.state.cityObject["best-local-fast-food-spot"]}</a> */}
+
             </div>
         )
     }
