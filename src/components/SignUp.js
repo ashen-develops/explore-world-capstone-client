@@ -43,7 +43,7 @@ class SignUp extends React.Component {
       .then((user) => {
         this.context.addUser(user);
         this.props.history.push(`/api/users/${user.id}`);
-        window.location = "/home";
+        window.location = "/select";
       })
       .catch((error) => {
         console.error({ error });
@@ -57,6 +57,7 @@ class SignUp extends React.Component {
   handleChange(e) {
     this.setState({ [e.currentTarget.name]: e.currentTarget.value });
     console.log(this.state.user);
+    console.log(this.state.password)
   }
   render() {
     return (

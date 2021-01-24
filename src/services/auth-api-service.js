@@ -62,24 +62,6 @@ const AuthApiService = {
         console.log('error:', err)
       })
   },
-  // save combination of music
-  postStates(music) {
-    return fetch(`${config.API_ENDPOINT}/api/states`, {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json',
-        },
-        body: JSON.stringify(music),
-      })
-      .then(res =>
-      (!res.ok) ?
-      res.json().then(e => Promise.reject(e)) :
-      res.json()
-      )
-      .catch(err => {
-        console.log('error:', err)
-      })
-  },
 }
 
 export default AuthApiService

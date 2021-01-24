@@ -6,6 +6,7 @@ import Landing from './Landing';
 import StateSelector from './StateSelector'
 import SignUp from './SignUp'
 import CityInfo from './CityInfo'
+import Suggestion from "./Suggestion";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/select" component={StateSelector} />
         <Route path="/signup" component={SignUp} />
         <Route path="/info" component={CityInfo} />
+        <Route path="/suggestions" component={Suggestion} />
       </Switch>
       </BrowserRouter>
     </div>

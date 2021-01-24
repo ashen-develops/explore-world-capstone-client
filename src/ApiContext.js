@@ -1,8 +1,9 @@
 import React from 'react'
 
-const ApiContext = React.createContext({
-  currentState: null,
-  setCurrentState: () => {}
-});
-
-export default ApiContext;
+export default React.createContext({
+  users: [],
+  passwords: [],
+  songs: [],
+  addUser: () => {},
+  addPassword: () => {},
+})

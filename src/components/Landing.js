@@ -66,6 +66,8 @@ class Landing extends Component {
         })
         .catch(err => {
             console.log(err) 
+            // this.setState({ error: err.error })
+            console.log(err.error)
         }) 
   }
 
@@ -131,6 +133,7 @@ class Landing extends Component {
               <div className="container">
                 <div className="center">
                   <button className="btn" type="submit">Login</button>
+                  <p className="error">{this.state.error}</p>
                 </div>
               </div>
             </form>

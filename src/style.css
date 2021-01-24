@@ -92,8 +92,21 @@ header h1 {
   color: #000000;
 }
 
+.logged-as{
+  margin: 0;
+}
+
+.logged-in-btn {
+  margin-bottom: 10px;
+}
+
+.hTitle {
+  flex-direction: column;
+}
+
 .supBtn{
   margin: 10px 0 0 20px;
+  padding: 10px;
 }
 
 .homeBtn {
