@@ -11,7 +11,7 @@ class Header extends React.Component {
         toggle: false,
         loggedIn: 'adsf',
         user: ''
-    }
+    };
 
     componentDidMount() {
         let currentUserId = TokenService.getUserId()
@@ -40,9 +40,9 @@ class Header extends React.Component {
           })
           .catch(err => {
             console.log('error:', err)
-          })
+          });
           
-    }
+    };
 
     logOutClick = () => {
         console.log('Logging out')
@@ -52,10 +52,10 @@ class Header extends React.Component {
         }
 
         window.location = '/select'
-    }
+    };
     Toggle = () => {
       this.setState({toggle:!this.state.toggle})
-    }
+    };
     LoggedIn = () => {
         if(this.state.loggedIn === 'Log Out'){
             this.setState({loggedIn: 'Sign In/Up'})
@@ -64,11 +64,9 @@ class Header extends React.Component {
         else{
             window.location = '/'
         }
-        console.log(this.state)
-    }
+    };
     
     render() {
-        console.log(TokenService.getUserId())
         return (
             <div className="header">
                 <header>
@@ -93,8 +91,8 @@ class Header extends React.Component {
                     </div>
                 </header>
             </div>
-        )
-    }
-}
+        );
+    };
+};
 
 export default Header;

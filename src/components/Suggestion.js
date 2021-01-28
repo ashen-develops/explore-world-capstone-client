@@ -12,7 +12,7 @@ class Suggestion extends React.Component {
       
         toggle:false,
         loggedIn: false,
-    }
+    };
 
     componentDidMount(){
         let currentUserId = TokenService.getUserId()
@@ -23,20 +23,20 @@ class Suggestion extends React.Component {
         else if (!currentUserId){
             this.setState({loggedIn: false})
         }
-    }
+    };
 
     logOutClick = () => {
         console.log('Logging out')
         TokenService.clearAuthToken()
         TokenService.getUserId = (id) => {
             console.log(id)
-        }
+        };
 
         window.location = '/home'
-    }
+    };
     Toggle = () => {
       this.setState({toggle:!this.state.toggle})
-    }
+    };
     LoggedIn = () => {
         if(this.state.loggedIn === 'Log Out'){
             this.setState({loggedIn: 'Sign In/Up'})
@@ -46,7 +46,7 @@ class Suggestion extends React.Component {
             window.location = '/'
         }
         console.log(this.state)
-    }
+    };
 
     handleSubmit = (e) => {
         e.preventDefault();
@@ -77,10 +77,9 @@ class Suggestion extends React.Component {
         this.setState({ [e.currentTarget.name]: e.currentTarget.value });
         console.log(this.state.forPlace);
         console.log(this.state.suggestion)
-      }
+      };
 
     render(){
-        // let {currentUserId} = TokenService.getUserId
         return (
             <div className="suggestion">
                 {!this.state.loggedIn?
@@ -108,7 +107,7 @@ class Suggestion extends React.Component {
                 </div>}
             </div>
         );
-    }
-}
+    };
+};
 
 export default Suggestion;

@@ -23,7 +23,7 @@ class Landing extends Component {
       emptyUserError: '',
       emptyPasswordError: '',
     };
-  }
+  };
   validateloginPassword(inputloginPassword) {
     let outputloginPassword = inputloginPassword;
     // at least one number, one lowercase and one uppercase letter
@@ -34,16 +34,16 @@ class Landing extends Component {
       outputloginPassword = "";
     }
     return outputloginPassword;
-  }
+  };
 
   toggleShow() {
     this.setState({ hidden: !this.state.hidden });
-  }
+  };
 
   handleChange(e) {
     this.setState({ [e.currentTarget.name]: e.currentTarget.value });
     // console.log(this.state);
-  }
+  };
 
   handleSubmit = (e) => {
     e.preventDefault() 
@@ -77,8 +77,8 @@ class Landing extends Component {
             console.log(err) 
             // this.setState({ error: err.error })
             console.log(err.error)
-        }) 
-  }
+        });
+  };
 
 
   render() {
@@ -89,7 +89,7 @@ class Landing extends Component {
             <strong>Info</strong>
             {this.state.formValidationError}
         </div>
-    }
+    };
     
     return (
       <div>
@@ -152,7 +152,7 @@ class Landing extends Component {
         </main>
       </div>
     );
-  }
-}
+  };
+};
 
 export default Landing;

@@ -52,13 +52,13 @@ class SignUp extends React.Component {
 
   toggleShow() {
     this.setState({ hidden: !this.state.hidden });
-  }
+  };
 
   handleChange(e) {
     this.setState({ [e.currentTarget.name]: e.currentTarget.value });
     console.log(this.state.user);
     console.log(this.state.password)
-  }
+  };
   render() {
     return (
       <div>
@@ -101,7 +101,7 @@ class SignUp extends React.Component {
         </main>
       </div>
     );
-  }
-}
+  };
+};
 
 export default SignUp;

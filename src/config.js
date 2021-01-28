@@ -4,4 +4,4 @@ export default {
     TOKEN_KEY: "demoSecret",
     // API_ENDPOINT: "http://localhost:8080/api",
 
-  }
+};

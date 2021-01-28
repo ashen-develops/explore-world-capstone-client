@@ -6,4 +6,4 @@ export default React.createContext({
   songs: [],
   addUser: () => {},
   addPassword: () => {},
-})
+});

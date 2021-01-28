@@ -5,8 +5,8 @@ import * as States from '../media/states'
 function ListOfStates(props) {
     return (
             <option key={props.state} value={props.state}>{props.state}</option>
-    )
-}
+    );
+};
 
 class StateSelector extends React.Component {
 
@@ -19,8 +19,8 @@ class StateSelector extends React.Component {
             just: [],
             justStates: [],
             setStates: () => {}
-        }
-    }
+        };
+    };
     setStates = (states) => {
         this.setState({ allStates: states });
       };
@@ -31,13 +31,13 @@ class StateSelector extends React.Component {
         });
         return this.setState({ just: result })
 
-    }
+    };
     removeDuplicates() {
         let chars = this.state.just;
         let uniqueChars = [...new Set(chars)];
 
         this.setState({ justStates: uniqueChars });
-    }
+    };
 
     componentDidMount() {
         return fetch(`${config.API_ENDPOINT}/states`, {
@@ -59,18 +59,18 @@ class StateSelector extends React.Component {
           })
           .catch(err => {
             console.log('error:', err)
-          })
+          });
           
-    }
+    };
 
     //create functions that will display appropriate State for selected state
     handleChange(e){
         console.log(e.currentTarget.value)
         this.setState({ currentState: e.currentTarget.value})
-    }
+    };
     handleSubmit = (e) => {
         e.preventDefault();
-    }
+    };
 
     generateStateSelect(states) {
         let result = [];
@@ -78,7 +78,7 @@ class StateSelector extends React.Component {
             result.push(<ListOfStates state={state} />)
         });
         return result
-    }
+    };
 
     renderSelectedState(selected) {
         if (!selected)
@@ -88,7 +88,7 @@ class StateSelector extends React.Component {
         console.log(this.state.currentState)
     
         return <State className={this.state.currentState.toLowerCase()} stateName={this.state.currentState}/>;
-      }
+    };
 
 
     render(){
@@ -113,8 +113,8 @@ class StateSelector extends React.Component {
                 </main>
 
             </div>
-        )
-    }
-}
+        );
+    };
+};
 
 export default StateSelector;

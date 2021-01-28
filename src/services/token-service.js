@@ -25,6 +25,6 @@ const TokenService = {
         return window.sessionStorage.getItem('user_id', user_id)
     }
 
-}
+};
 
 export default TokenService

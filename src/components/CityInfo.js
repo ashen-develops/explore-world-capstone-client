@@ -12,16 +12,16 @@ class CityInfo extends React.Component {
             blffsLink: "placeholder",
             bdfsLink: "placeholder",
             bosLink: "placeholder",
-        }
-    }
+        };
+    };
 
     seperateCurrentCityObj(cityObjs) {
         cityObjs.forEach((cityObj) => {
             if (this.props.currentCity === cityObj.city){
                 return this.setState({ cityObject: cityObj })
             }
-        })
-    }
+        });
+    };
 
     // On component mount have all state info go into allStates
     componentDidMount() {
@@ -47,9 +47,9 @@ class CityInfo extends React.Component {
           })
           .catch(err => {
             console.log('error:', err)
-          })
+          });
           
-    }
+    };
 
     //CREATE A COMPONENT DID UPDATE HERE FOR WHEN CITY IS CHANGED WITHOUT STATE
     componentDidUpdate(prevProps) {
@@ -60,7 +60,7 @@ class CityInfo extends React.Component {
             this.setBosLink()
             this.setBlffsLink()
         }
-    }
+    };
 
 
     setBcbsLink() {
@@ -70,7 +70,7 @@ class CityInfo extends React.Component {
         else{
             return this.setState({ bcbsLink: this.state.cityObject["bcbs-link"]})
         }
-    }
+    };
     setBdfsLink() {
         if(this.state.bdfsLink.includes("http")){
             return this.setState({ bdfsLink: this.state.cityObject["bdfs-link"].replace(" ", "")})
@@ -78,7 +78,7 @@ class CityInfo extends React.Component {
         else{
             return this.setState({ bdfsLink: this.state.cityObject["bdfs-link"] })
         }
-    }
+    };
     setBosLink() {
         if(this.state.bosLink.includes("https")){
             return this.setState({ bosLink: this.state.cityObject["bos-link"].replace(" ", "")})
@@ -86,7 +86,7 @@ class CityInfo extends React.Component {
         else{
             return this.setState({ bosLink: this.state.cityObject["bos-link"] })
         }
-    }
+    };
     setBlffsLink() {
         if(this.state.blffsLink.includes("http")){
             return this.setState({ blffsLink: this.state.cityObject["blffs-link"].replace(" ", "")})
@@ -94,7 +94,7 @@ class CityInfo extends React.Component {
         else{
             return this.setState({ blffsLink: this.state.cityObject["blffs-link"] })
         }
-    }
+    };
     bcbsAddressVSHtml(){
         if(this.state.bcbsLink.includes("http")){
             return <a target="_blank" rel="noreferrer" href={this.state.bcbsLink.replace(" ", "")}>{this.state.cityObject["best-cheap-beer-spot"]}</a>
@@ -107,7 +107,7 @@ class CityInfo extends React.Component {
                 </div>
             ) 
         }
-    }
+    };
     bdfsAddressVSHtml(){
         if(this.state.bdfsLink.includes("http")){
             return <a target="_blank" rel="noreferrer" href={this.state.bdfsLink.replace(" ", "")}>{this.state.cityObject["best-dog-friendly-spot"]}</a>
@@ -120,7 +120,7 @@ class CityInfo extends React.Component {
                 </div>
             ) 
         }
-    }
+    };
     bosAddressVSHtml(){
         if(this.state.bosLink.includes("http")){
             return <a target="_blank" rel="noreferrer" href={this.state.bosLink.replace(" ", "")}>{this.state.cityObject["best-outdoorsy-spot"]}</a>
@@ -133,7 +133,7 @@ class CityInfo extends React.Component {
                 </div>
             ) 
         }
-    }
+    };
     blffsAddressVSHtml(){
         if(this.state.blffsLink.includes("http")){
             return <a target="_blank" rel="noreferrer" href={this.state.blffsLink.replace(" ", "")}>{this.state.cityObject["best-local-fast-food-spot"]}</a>
@@ -146,7 +146,7 @@ class CityInfo extends React.Component {
                 </div>
             ) 
         }
-    }
+    };
 
     render() {
         return(
@@ -165,8 +165,8 @@ class CityInfo extends React.Component {
                 {this.blffsAddressVSHtml()}
 
             </div>
-        )
-    }
-}
+        );
+    };
+};
 
 export default CityInfo

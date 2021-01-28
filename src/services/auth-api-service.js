@@ -61,7 +61,7 @@ const AuthApiService = {
       .catch(err => {
         console.log('error:', err)
       })
-  },
-}
+  }
+};
 
 export default AuthApiService
