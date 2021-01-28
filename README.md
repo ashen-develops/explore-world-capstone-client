@@ -1,10 +1,10 @@
-# Explore The World and Do Stuff!
-This app will allow a user to create an account/ login, and then make songs out of pre-recorded loops of music.
+# Stuff To Do!
+This app will allow a user to create an account/ login, and then view a currated list of things to do in cities accross the US.
 
 
 
 ### 1. Working Prototype
-You can access a working prototype of the React app here: https://wonderful-music-contraption.vercel.app/ and Node app here: https://wonderful-music-contraption.herokuapp.com/
+You can access a working prototype of the React app here: https://stuff-to-do.vercel.app/ and Node app here: https://stuff-to-do.herokuapp.com/
 
 
 
@@ -16,36 +16,22 @@ This app is for two types of users: a visitor and a logged-in user
     * I can sign up, or log in
     * If I sign up I'll be able to log in later
     * If I log in, I'll be registered as a logged in user
-    * I can try out the main feature of the app (making music) without being able to save
-    * and without being able to use social features
 
 ######  Sign Up (Importance - High)  (Est: 3h)
 * As a visitor
     * I want to register to use this app
     * So I can create a personal account.
 
-######  Home Page (Importance - Medium)  (Est: 2h)
-* As a logged-in user,
+######  Home Page (Importance - High)  (Est: 2h)
+* As a visitor,
     * I want to be able to preview the content of the app,
-    * So i can decide what section I want to navigate to.
+    * So i can decide which location I want to navigate to.
+    * Once I choose a state a city selector should pop up
+    * Once the search is narrowed down I should be able to see a few things to do in that city
 
-###### Song Maker (Importance - High) (Est: 5h)
-* as a visitor
-    * I can sign up, or log in
-    * If I sign up I'll be able to log in later
-    * If I log in, I'll be registered as a logged in user
-    * I can try out the main feature of the app (making music) without being able to save
-    * and without being able to use social features
-
-######  My Saved Songs (Importance - Medium)  (Est: 3h)
-* As a logged-in user,
-    * I want to register to use this app
-    * So I can create a personal account.
-
-######  Social Hub (Importance - Small)  (Est: 2h)
-* As a logged-in user,
-* I want to be able to preview the content of the app,
-* So i can decide what section I want to navigate to.
+###### Suggestions Page (Importance - Medium) (Est: 5h)
+* as a logged-in user
+    * I can make suggestions for added places and things
 
 
 
@@ -53,12 +39,9 @@ This app is for two types of users: a visitor and a logged-in user
 The app's functionality includes:
 * Every User has the ability to
     * create an account
-    * use the app to play with the sound files
-    * view other people's sound file combinations
+    * use the app to discover things to do around the US
 * Every logged in User has the added ability to
-    * save their music creations to the database
-    * rate other users music creations
-    * post their own saved combinations to the social hub
+    * make suggestions on new places and things to add
 
 
 
@@ -72,29 +55,14 @@ The app's functionality includes:
 
 ### 5. Wireframes
 
-Landing/Login Page
-:------------------:
-<img src="readme-images/Landing_ Login.jpg" />
-
-Sign Up Page
-:------------------:
-<img src="readme-images/Sign Up.jpg" />
-
-Song Maker Page
-:------------------:
-<img src="readme-images/Song Maker.jpg" />
-
 Home Page
 :------------------:
-<img src="readme-images/Home.jpg" />
+<img src="readme-images/Home.JPG" />
 
-Saved Loops Page
+Suggestions Page
 :------------------:
-<img src="readme-images/Saved Loops.jpg" />
+<img src="readme-images/Suggestion.JPG" />
 
-Social Page
-:------------------:
-<img src="readme-images/Social.jpg" />
 
 
 
@@ -102,31 +70,39 @@ Social Page
 * (Example) __Index.js__ (stateless)
     * __App.js__ (stateful)
         * __LandingPage.js__ (stateful) - gets the _"prop name"_ and the _"callback prop name"_ from the __App.js__
-            * __Login.js__ (stateful) -
-            * __Register.js__ (stateful) -
-        * __Navbar.js__ (stateless) -
+            * __Suggestion.js__ (stateful) -
+            * __StateSelector.js__ (stateful) -
+                * __(LOCATION).js__ (stateful) -
+                    * __CityInfo.js__ (stateful) -
+            * __SignUp.js__ (stateful) -
+        * __Header.js__ (stateless) -
+        * __Footer.js__ (stateless) -
 
 
 
 ### 7. Back-end Structure - Business Objects
-* Users (database table)
+* users (database table)
     * id (auto-generated)
     * username (email validation)
     * password (at least 8 chars, at least one alpha and a special character validation)
 
-* Music (database table)
+* states (database table)
     * id (auto-generated)
-    * user_id (foreign key connecting with the users table)
-    * group_one_two_beat_one (expect to be a string && varchar 255 characters)
-    * group_one_two_beat_two (expect to be a string && varchar 255 characters)
-    * group_two_one_beat_one (expect to be a string && varchar 255 characters)
-    * group_two_one_beat_two (expect to be a string && varchar 255 characters)
-    * group_two_one_beat_three (expect to be a string && varchar 255 characters)
-    * group_two_one_beat_four (expect to be a string && varchar 255 characters)
-    * group_three_two_beat_one (expect to be a string && varchar 255 characters)
-    * group_three_two_beat_two (expect to be a string && varchar 255 characters)
-    * sharable (boolean value default false)
-    * date_last_edited (timestamp of when the user last saved to account)
+    * state (expect to be a string && varchar 255 characters)
+    * city (expect to be a string && varchar 255 characters)
+    * best_cheap_beer_spot (expect to be a string && varchar 255 characters)
+    * bcbs_link (expect to be a string && varchar 255 characters)
+    * best_dog_friendly_spot (expect to be a string && varchar 255 characters)
+    * bdfs_link (expect to be a string && varchar 255 characters)
+    * best_outdoorsy_spot (expect to be a string && varchar 255 characters)
+    * bos_link (expect to be a string && varchar 255 characters)
+    * best_local_fast_food_spot (expect to be a string && varchar 255 characters)
+    * blffs_link (expect to be a string && varchar 255 characters)
+
+* suggestions (database table)
+    * id (auto-generated)
+    * for_place (expect to be a string && varchar 255 characters)
+    * suggestion (expect to be a string && varchar 255 characters)
 
 
 ### 8. API Documentation
@@ -135,26 +111,22 @@ API Documentation details:
 
 
 
-### 9. Screenshots (to do later)
+### 9. Screenshots
 Landing/Login Page
 :------------------:
-<img src="screenshots/Landing.PNG" />
+<img src="readme-images/Landing.JPG" />
 
 Sign Up Page
 :------------------:
-<img src="screenshots/signUp.PNG" />
-
-Song Maker Page
-:------------------:
-<img src="screenshots/contraption.PNG" />
+<img src="readme-images/sign.JPG" />
 
 Home Page
 :------------------:
-<img src="screenshots/home.PNG" />
+<img src="readme-images/homeSelect.JPG" />
 
-Saved Loops Page
+Suggestion Page
 :------------------:
-<img src="screenshots/myLoops.PNG" />
+<img src="readme-images/sugg.JPG" />
 
 
 
@@ -162,7 +134,9 @@ Saved Loops Page
 
 ### 10. Development Roadmap
 This is v0.5 of the app, but future enhancements are expected to include:
-* add more functionality
+* information for more places
+* a voting system for the next place to be covered
+* a more optimized suggestions system that semi automates stright into the states store
 
 
 
