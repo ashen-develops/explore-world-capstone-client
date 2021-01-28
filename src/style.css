@@ -1,73 +1,33 @@
-@import url('https://fonts.googleapis.com/css?family=Salsa|Architects+Daughter|Cinzel&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Salsa|Architects+Daughter|Cinzel|Montserrat&display=swap');
 /* data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5RDYAwDEXRDgmvEocnlrQS2SwUFST9uEfBGWs9c97nbGtDcquqiKhOImLs/UpuzVzWEi1atGjRokWLFi1atGjRokWLFi1atGjRokWLFi1af7Ukz8xWp8z8AAAA//8DAJ4LoEAAlL1nAAAAAElFTkSuQmCC */
 
 /* Background data (Original source: https://subtlepatterns.com/grid-me/) */
 /* Animations */
-@-webkit-keyframes bg-scrolling-reverse {
-  100% {
-    background-position: 50px 50px;
-  }
+html, body {
+  width: 100%;
+  height:100%;
 }
-@-moz-keyframes bg-scrolling-reverse {
-  100% {
-    background-position: 50px 50px;
-  }
-}
-@-o-keyframes bg-scrolling-reverse {
-  100% {
-    background-position: 50px 50px;
-  }
-}
-@keyframes bg-scrolling-reverse {
-  100% {
-    background-position: 50px 50px;
-  }
-}
-@-webkit-keyframes bg-scrolling {
-  0% {
-    background-position: 50px 50px;
-  }
-}
-@-moz-keyframes bg-scrolling {
-  0% {
-    background-position: 50px 50px;
-  }
-}
-@-o-keyframes bg-scrolling {
-  0% {
-    background-position: 50px 50px;
-  }
-}
-@keyframes bg-scrolling {
-  0% {
-    background-position: 50px 50px;
-  }
-}
-/* Main styles */
+
 body {
-  margin-top: 20px;
-  color: #999;
-  text-align: center;
-  /* img size is 50x50 */
-  background: url("./media/background.jpg") repeat 0 0;
-  -webkit-animation: bg-scrolling-reverse 4.92s infinite;
-  /* Safari 4+ */
-  -moz-animation: bg-scrolling-reverse 4.92s infinite;
-  /* Fx 5+ */
-  -o-animation: bg-scrolling-reverse 4.92s infinite;
-  /* Opera 12+ */
-  animation: bg-scrolling-reverse 4.92s infinite;
-  /* IE 10+ */
-  -webkit-animation-timing-function: linear;
-  -moz-animation-timing-function: linear;
-  -o-animation-timing-function: linear;
-  animation-timing-function: linear;
+    background: linear-gradient(-45deg, #fafafa, #feffe0, #23a6d5, #ffe9d0);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    font-family: Montserrat;
 }
-body::before {
-  font-size: 8rem;
-  font-weight: 100;
-  font-style: normal;
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
+
+/* ----------------HEADER------------------------- */
 
 header {
   align-items: center;
@@ -92,8 +52,53 @@ header h1 {
   color: #000000;
 }
 
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  margin: 20px auto;
+}
+
+.signup{
+  margin: 20px auto;
+  text-align: center;
+}
+.signbtn {
+  margin: 5px 20px;
+  background-color: aquamarine;
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='27' ry='27' stroke='%23EC3463' stroke-width='4' stroke-dasharray='50%25%2c 13%25' stroke-dashoffset='0' stroke-linecap='butt'/%3e%3c/svg%3e");
+  /* border:#EC3471;
+  border-style: dashed; */
+  border-radius: 27px;
+  padding: 20px 0px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  /* border-radius: 3%; */
+  width: 80%;
+  max-width: 500px;
+  text-shadow: none;
+  font-weight: bold;
+}
+
+.btn {
+  margin: 15px auto;
+  background-color: #7FFFD4;
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='27' ry='27' stroke='%23000000' stroke-width='4' stroke-dasharray='50%25%2c 13%25' stroke-dashoffset='0' stroke-linecap='butt'/%3e%3c/svg%3e");
+  border-radius: 27px;
+  padding: 20px 70px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border: none;
+}
+
 .logged-as{
   margin: 0;
+  font-size: 14px;
 }
 
 .logged-in-btn {
@@ -116,6 +121,11 @@ header h1 {
   padding: 10px 10px;
 }
 
+.line {
+  width: 90%;
+  margin: auto;
+}
+
 header button, header button:active {
   background-color: transparent;
   border: none;
@@ -126,10 +136,13 @@ header button, header button:active {
   display: flex;
 }
 
+/* ----------------------MAIN --------------------------------------- */
+
 main {
   align-items: center;
   display: flex;
   flex-direction: column;
+  margin: 10px auto 50px auto
 }
 h2 {
   font-family: Salsa;
@@ -171,14 +184,20 @@ a:hover {
 
 p{
   color: #5a5959;
+  text-align: center;
 }
 #stateSelect {
   margin-bottom: 20px;
 }
+
+.Landing {
+  width: 80%;
+  margin: auto;
+  padding-bottom: 60px;
+}
 .App {
-  background-color: #ffffff99;
+  background-color: #ffffffc5;
   box-shadow: 1px 1px 28px grey;
-  padding-bottom: 49px;
 
 }
 
@@ -258,350 +277,63 @@ p{
   flex-direction: column;
   align-items: center;
 }
-/*-------------------------------------- STATES ----------------------------------- */
-.alabama {
-  position: absolute;
-  width: 72.54px;
-  height: 116.06px;
-  left: 913.82px;
-  top: 1003.79px;
+
+.suggestion {
+  text-align: center;
+  padding: 20px 0 200px 0;
 }
 
-.alaska{
-  position: absolute;
-  width: 176px;
-  height: 175px;
-  left: 315px;
-  top: 1177px;
+/*-----------------------------FOOTER --------------------------*/
+footer{
+  background-color: rgba(0, 0, 0, 0.774);
+  padding: 49px 0 49px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.arizona{
-  position: absolute;
-  width: 129.45px;
-  height: 148.42px;
-  left: 267.69px;
-  top: 927.91px;
+footer h1 {
+  color:#fafafa
 }
-.arkansas{
-  position: absolute;
-  width: 91.51px;
-  height: 85.93px;
-  left: 749.77px;
-  top: 985.94px;
+footer ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
 }
-.california{
-  position: absolute;
-  width: 154px;
-  height: 254.43px;
-  left: 107px;
-  top: 734.85px;
+
+
+/* Media screen size */
+@media screen and (min-width: 768px) {
+  .line {
+    width: 60%;
+  }
+  .Landing{
+    width: 60%;
+    flex-direction: row;
+  }
+  .selectionPage {
+    flex-direction: row;
+  }
+  .req {
+    width: 60%;
+    margin:auto;
+  }
 }
-.colorado{
-  position: absolute;
-  width: 137.26px;
-  height: 106.01px;
-  left: 433.97px;
-  top: 834.17px;
+
+@media all and (min-width: 600px){
+  .homeBtn {
+    justify-content: left;
+  }
+  .headerAbove {
+    width: 100%
+  }
+
+  .signup{
+    width: 50%;
+  }
+  header h1 {
+    font-size: 40px;
+  }
+
 }
-.connecticut{
-  position: absolute;
-  width: 34.59px;
-  height: 30.13px;
-  left: 1206.19px;
-  top: 662.32px;
-}
-.delaware{
-  position: absolute;
-  width: 22.32px;
-  height: 34.59px;
-  left: 1218.46px;
-  top: 801.81px;
-}
-.florida{
-  position: absolute;
-  width: 172.97px;
-  height: 133.91px;
-  left: 961.8px;
-  top: 1123.2px;
-}
-.georgia{
-  position: absolute;
-  width: 102.67px;
-  height: 107.13px;
-  left: 977.42px;
-  top: 999.33px;
-}
-.hawaii{
-  position: absolute;
-  width: 151px;
-  height: 101px;
-  left: 115px;
-  top: 1134px;
-}
-.idaho{
-  position: absolute;
-  width: 113.82px;
-  height: 181.9px;
-  left: 275.51px;
-  top: 570.81px;
-}
-.illinois{
-  position: absolute;
-  width: 78.11px;
-  height: 132.8px;
-  left: 835.7px;
-  top: 771.68px;
-}
-.indiana{
-  position: absolute;
-  width: 59.14px;
-  height: 101.55px;
-  left: 929.44px;
-  top: 756.05px;
-}
-.iowa{
-  position: absolute;
-  width: 113.82px;
-  height: 74.77px;
-  left: 727.46px;
-  top: 753.82px;
-}
-.kansas{
-  position: absolute;
-  width: 141.72px;
-  height: 75.88px;
-  left: 577.92px;
-  top: 874.34px;
-}
-.kentucky{
-  position: absolute;
-  width: 133.91px;
-  height: 73.65px;
-  left: 913.82px;
-  top: 840.87px;
-}
-.maine{
-  position: absolute;
-  width: 68.07px;
-  height: 108.25px;
-  left: 1222.93px;
-  top: 486px;
-}
-.maryland{
-  position: absolute;
-  width: 85.93px;
-  height: 65.84px;
-  left: 1137px;
-  top: 807.39px;
-}
-.massachusetts{
-  position: absolute;
-  width: 58.03px;
-  height: 32.36px;
-  left: 1222.93px;
-  top: 621.03px;
-}
-.michigan{
-  position: absolute;
-  /* width: 74.77px; */
-  height: 140.55px;
-  left: 860.45px;
-  top: 590.3px;
-}
-.minnesota{
-  position: absolute;
-  width: 137.26px;
-  height: 146.19px;
-  left: 716.3px;
-  top: 588.67px;
-}
-.mississppi{
-  position: absolute;
-  width: 69.19px;
-  height: 116.06px;
-  left: 835.7px;
-  top: 1009.37px;
-}
-.missouri{
-  position: absolute;
-  width: 126.1px;
-  height: 112.71px;
-  left: 736.38px;
-  top: 855.37px;
-}
-.montana{
-  position: absolute;
-  width: 195.29px;
-  height: 120.52px;
-  left: 359.2px;
-  top: 570.81px;
-}
-.nebraska{
-  position: absolute;
-  width: 155.11px;
-  height: 75.88px;
-  left: 564.53px;
-  top: 771.68px;
-}
-.nevada{
-  position: absolute;
-  width: 109px;
-  height: 163px;
-  left: 206px;
-  top: 765px;
-}
-.newHampshire{
-  position: absolute;
-  width: 32.36px;
-  height: 64.72px;
-  left: 1211.77px;
-  top: 566.35px;
-}
-.newJersey{
-  position: absolute;
-  width: 25.67px;
-  height: 52.45px;
-  left: 1201.73px;
-  top: 732.62px;
-}
-.newMexico{
-  position: absolute;
-  width: 131.68px;
-  height: 137.26px;
-  left: 411.65px;
-  top: 950.23px;
-}
-.newYork{
-  position: absolute;
-  width: 142.84px;
-  height: 109.36px;
-  left: 1071.16px;
-  top: 610.98px;
-}
-.northCarolina{
-  position: absolute;
-  width: 160.69px;
-  height: 74.77px;
-  left: 999.74px;
-  top: 930.14px;
-}
-.northDakota{
-  position: absolute;
-  width: 123.87px;
-  height: 80.35px;
-  left: 580.15px;
-  top: 590.9px;
-}
-.ohio{
-  position: absolute;
-  width: 80.35px;
-  height: 90.39px;
-  left: 988.58px;
-  top: 725.92px;
-}
-.oklahoma{
-  position: absolute;
-  width: 168.51px;
-  height: 84.81px;
-  left: 568.99px;
-  top: 977.01px;
-}
-.oregon{
-  position: absolute;
-  width: 152.88px;
-  height: 124.98px;
-  left: 114.81px;
-  top: 621.03px;
-}
-.pennsylvania{
-  position: absolute;
-  width: 107.13px;
-  height: 71.42px;
-  left: 1080.09px;
-  top: 717px;
-}
-.rhodeIsland{
-  position: absolute;
-  width: 17.85px;
-  height: 20.09px;
-  left: 1251.94px;
-  top: 661.2px;
-  
-}
-.southCarolina{
-  position: absolute;
-  width: 94.85px;
-  height: 73.65px;
-  left: 1084.55px;
-  top: 1024.99px;
-}
-.southDakota{
-  position: absolute;
-  width: 133.91px;
-  height: 82.58px;
-  left: 574.57px;
-  top: 691.33px;
-}
-.tennessee{
-  position: absolute;
-  width: 161.81px;
-  height: 58.03px;
-  left: 856.9px;
-  top: 927.91px;
-}
-.texas{
-  position: absolute;
-  width: 260.01px;
-  height: 253.32px;
-  left: 477.49px;
-  top: 1019.41px;
-}
-.utah{
-  position: absolute;
-  width: 106.01px;
-  height: 131.68px;
-  left: 317.91px;
-  top: 791.76px;
-}
-.vermont{
-  position: absolute;
-  width: 33.48px;
-  height: 63.61px;
-  left: 1179.41px;
-  top: 574.16px;
-}
-.virginia{
-  position: absolute;
-  width: 137.26px;
-  height: 89.27px;
-  left: 1047.73px;
-  top: 838.63px;
-}
-.washington{
-  position: absolute;
-  width: 128.33px;
-  height: 89.27px;
-  left: 159.45px;
-  top: 538.45px;
-}
-.westVirginia{
-  position: absolute;
-  width: 87.04px;
-  height: 75.88px;
-  left: 1049.96px;
-  top: 788.42px;
-}
-.wisconsin{
-  position: absolute;
-  /* width: 148.42px; */
-  height: 116.84px;
-  left: 831.19px;
-  top: 640.98px;
-}
-.wyoming{
-  position: absolute;
-  width: 131.68px;
-  height: 108.25px;
-  left: 410.53px;
-  top: 704.72px;
-}
+

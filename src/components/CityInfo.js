@@ -150,7 +150,7 @@ class CityInfo extends React.Component {
 
     render() {
         return(
-            <div>
+            <div className="cityInfoPage">
                 <h2>Stuff To Do in, {this.props.currentCity}</h2>
                 <h3>Best Cheap Beer Spot</h3>
                 {this.bcbsAddressVSHtml()}

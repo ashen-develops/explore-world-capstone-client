@@ -7,6 +7,7 @@ import StateSelector from './StateSelector'
 import SignUp from './SignUp'
 import CityInfo from './CityInfo'
 import Suggestion from "./Suggestion";
+import Footer from './Footer'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/info" component={CityInfo} />
         <Route path="/suggestions" component={Suggestion} />
       </Switch>
+      <Footer />
       </BrowserRouter>
     </div>
   );

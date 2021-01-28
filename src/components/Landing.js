@@ -18,7 +18,9 @@ class Landing extends Component {
       LogInUserID: 0,
       error: null,
       params: {},
-      formValidationError: ''
+      formValidationError: '',
+      emptyUserError: '',
+      emptyPasswordError: '',
     };
   }
   validateloginPassword(inputloginPassword) {
@@ -47,6 +49,12 @@ class Landing extends Component {
     const { userName, password } = e.target
     // console.log(userName, password)
     // console.log('username:', userName.value, 'password:', password.value) 
+    if (!this.state.userName) {
+      return this.setState({ emptyUserError: "username cannot be empty"})
+    }
+    else if (!this.state.password){
+      return this.setState({ emptyPasswordError: "password cannot be empty"})
+    }
     AuthApiService.postLogin({
         user_name: userName.value,
         password: password.value,
@@ -81,6 +89,7 @@ class Landing extends Component {
             {this.state.formValidationError}
         </div>
     }
+    
     return (
       <div>
         <main className="Landing">
@@ -91,7 +100,7 @@ class Landing extends Component {
               </Link>
             </div>
             <div>
-              <p className="req">Must log in (either with your account or dummy account) to use the music contraption</p>
+              <p className="req">Must log in (either with your account or the demo account) to make suggestions for future updates to the app</p>
             </div>
           </div>
 
@@ -101,7 +110,7 @@ class Landing extends Component {
 
             {showErrorOutput}
 
-            <p>If you're just here to demo the app you can just use the login:</p>
+            <p>If you're here to demo the app you can login with:</p>
             <p>u-demo : p-password</p>
             <form className="login" onSubmit={this.handleSubmit}>
               <label htmlFor="user">Username:</label>

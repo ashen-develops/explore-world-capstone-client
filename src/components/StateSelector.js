@@ -96,16 +96,18 @@ class StateSelector extends React.Component {
         return(
             <div>
                 <main>
-                    <h2>Choose Your Desired State</h2>
-                    <div className="selectBoxes">
-                        <select id="stateSelect" name="stateSelect" onChange={e => this.handleChange(e)}>
-                            <option key="..." value="...">...</option>
-                            {this.state.allStates
-                            ? this.generateStateSelect(this.state.justStates)
-                            : null}
-                        </select>
-                        <div>
-                            {this.renderSelectedState(this.state.currentState)}
+                    <div className="selectionPage">
+                        <h2>Choose Your Desired State</h2>
+                        <div className="selectBoxes">
+                            <select id="stateSelect" name="stateSelect" onChange={e => this.handleChange(e)}>
+                                <option key="..." value="...">...</option>
+                                {this.state.allStates
+                                ? this.generateStateSelect(this.state.justStates)
+                                : null}
+                            </select>
+                            <div>
+                                {this.renderSelectedState(this.state.currentState)}
+                            </div>
                         </div>
                     </div>
                 </main>
