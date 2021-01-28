@@ -32,6 +32,7 @@ This app is for two types of users: a visitor and a logged-in user
 ###### Suggestions Page (Importance - Medium) (Est: 5h)
 * as a logged-in user
     * I can make suggestions for added places and things
+    * (future) update suggestions table
 
 
 
