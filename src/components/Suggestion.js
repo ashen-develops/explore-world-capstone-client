@@ -16,7 +16,6 @@ class Suggestion extends React.Component {
 
     componentDidMount(){
         let currentUserId = TokenService.getUserId()
-        console.log(currentUserId)
         if (currentUserId){
             this.setState({loggedIn: true})
         }
@@ -26,12 +25,7 @@ class Suggestion extends React.Component {
     };
 
     logOutClick = () => {
-        console.log('Logging out')
         TokenService.clearAuthToken()
-        TokenService.getUserId = (id) => {
-            console.log(id)
-        };
-
         window.location = '/home'
     };
     Toggle = () => {
@@ -45,7 +39,6 @@ class Suggestion extends React.Component {
         else{
             window.location = '/'
         }
-        console.log(this.state)
     };
 
     handleSubmit = (e) => {
@@ -75,8 +68,6 @@ class Suggestion extends React.Component {
 
       handleChange(e) {
         this.setState({ [e.currentTarget.name]: e.currentTarget.value });
-        console.log(this.state.forPlace);
-        console.log(this.state.suggestion)
       };
 
     render(){

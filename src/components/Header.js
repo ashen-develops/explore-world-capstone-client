@@ -15,7 +15,6 @@ class Header extends React.Component {
 
     componentDidMount() {
         let currentUserId = TokenService.getUserId()
-        console.log(currentUserId)
         if (currentUserId){
             this.setState({loggedIn: 'Log Out'})
         }
@@ -35,7 +34,6 @@ class Header extends React.Component {
             res.json()
           )
           .then((resJson) => {
-            console.log(resJson)
             this.setState({ user: resJson.user_name })
           })
           .catch(err => {
@@ -45,14 +43,11 @@ class Header extends React.Component {
     };
 
     logOutClick = () => {
-        console.log('Logging out')
         TokenService.clearAuthToken()
-        TokenService.getUserId = (id) => {
-            console.log(id)
-        }
 
         window.location = '/select'
     };
+    
     Toggle = () => {
       this.setState({toggle:!this.state.toggle})
     };

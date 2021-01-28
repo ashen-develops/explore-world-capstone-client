@@ -52,7 +52,6 @@ class StateSelector extends React.Component {
             res.json()
           )
           .then((resJson) => {
-              console.log(resJson)
               this.setStates(resJson)
               this.separateStates(this.state.allStates)
               this.removeDuplicates()
@@ -65,7 +64,6 @@ class StateSelector extends React.Component {
 
     //create functions that will display appropriate State for selected state
     handleChange(e){
-        console.log(e.currentTarget.value)
         this.setState({ currentState: e.currentTarget.value})
     };
     handleSubmit = (e) => {
@@ -85,7 +83,6 @@ class StateSelector extends React.Component {
           return null;
         
         const State = States[selected.replace(" ", "")];
-        console.log(this.state.currentState)
     
         return <State className={this.state.currentState.toLowerCase()} stateName={this.state.currentState}/>;
     };

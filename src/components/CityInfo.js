@@ -37,7 +37,6 @@ class CityInfo extends React.Component {
             res.json()
           )
           .then((resJson) => {
-            console.log(resJson)
             this.setState({ cityObjectResults: resJson })
             this.seperateCurrentCityObj(resJson)
             this.setBcbsLink()

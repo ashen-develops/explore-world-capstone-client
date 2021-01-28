@@ -42,14 +42,11 @@ class Landing extends Component {
 
   handleChange(e) {
     this.setState({ [e.currentTarget.name]: e.currentTarget.value });
-    // console.log(this.state);
   };
 
   handleSubmit = (e) => {
     e.preventDefault() 
     const { userName, password } = e.target
-    // console.log(userName, password)
-    // console.log('username:', userName.value, 'password:', password.value) 
     if (!this.state.userName) {
       return this.setState({ emptyUserError: "username cannot be empty"})
     }
@@ -62,8 +59,6 @@ class Landing extends Component {
     })
 
         .then(res => {
-            // console.log('response ID', res)
-            console.log(this.state)
             userName.value = ''
             password.value = ''
             TokenService.saveAuthToken(res.authToken)
@@ -75,7 +70,6 @@ class Landing extends Component {
         })
         .catch(err => {
             console.log(err) 
-            // this.setState({ error: err.error })
             console.log(err.error)
         });
   };

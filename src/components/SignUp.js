@@ -56,8 +56,6 @@ class SignUp extends React.Component {
 
   handleChange(e) {
     this.setState({ [e.currentTarget.name]: e.currentTarget.value });
-    console.log(this.state.user);
-    console.log(this.state.password)
   };
   render() {
     return (
