@@ -3,11 +3,7 @@ import ApiContext from '../../ApiContext';
 import CityInfo from '../../components/CityInfo';
 import config from '../../config'
 
-function ListOfCities(props) {
-    return (
-            <option value={props.city}>{props.city}</option>
-    )
-}
+
 
 class California extends React.Component {
     static contextType = ApiContext;
@@ -30,13 +26,16 @@ class California extends React.Component {
         console.log(this.state.currentCity)
     }
 
-    generateCitySelect(cities) {
-        let result = [];
-        cities.forEach((city) => {
-            result.push(<ListOfCities city={city} />)
-        });
-        return result
-    }
+  generateCitySelect(cities) {
+    let result = cities.map((city, key) => {
+      return (
+        <option key={key} value={city}>
+          {city}
+        </option>
+      );
+    });
+    return result;
+  }
 
     setStates = (states) => {
         this.setState({ allStates: states });
