@@ -144,6 +144,11 @@ main {
   flex-direction: column;
   margin: 10px auto 50px auto
 }
+
+main .supportIcon{
+  text-align: center;
+  fill: #5a5959;
+}
 h2 {
   font-family: Salsa;
   font-style: normal;
@@ -299,6 +304,10 @@ footer ul {
   list-style-type: none;
   display: flex;
   flex-direction: row;
+}
+
+footer h3 {
+  color:#fafafa
 }
 
 

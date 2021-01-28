@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import AuthApiService from "../services/auth-api-service";
 import TokenService from "../services/token-service"
+import SupportIcon from "../media/SupportIcon"
 
 class Landing extends Component {
   constructor(props) {
@@ -94,6 +95,7 @@ class Landing extends Component {
       <div>
         <main className="Landing">
           <div className="landing-buttons">
+            <p className="req">If you have any suggestions for new things and places just click on this button:</p><SupportIcon /><p>in the header</p>
             <div className="signup">
               <Link className="signbtn abtn" to="/signup">
                 Sign Up
