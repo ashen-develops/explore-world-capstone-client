@@ -55,7 +55,7 @@ class StateSelector extends React.Component {
         this.removeDuplicates();
       })
       .catch((err) => {
-        console.log("error:", err);
+        //console.log("error:", err);
       });
   }
 

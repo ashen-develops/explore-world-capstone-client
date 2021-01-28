@@ -37,7 +37,7 @@ class Header extends React.Component {
             this.setState({ user: resJson.user_name })
           })
           .catch(err => {
-            console.log('error:', err)
+            //console.log('error:', err)
           });
           
     };
@@ -47,7 +47,7 @@ class Header extends React.Component {
 
         window.location = '/select'
     };
-    
+
     Toggle = () => {
       this.setState({toggle:!this.state.toggle})
     };

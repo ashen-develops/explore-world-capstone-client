@@ -45,7 +45,7 @@ class CityInfo extends React.Component {
             this.setBlffsLink()
           })
           .catch(err => {
-            console.log('error:', err)
+            //console.log('error:', err)
           });
           
     };

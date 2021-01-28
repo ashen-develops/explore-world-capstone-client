@@ -66,11 +66,11 @@ class Landing extends Component {
             window.location = '/select'
         })
         .then(res => {
-            console.log('response:', res)
+            //console.log('response:', res)
         })
         .catch(err => {
-            console.log(err) 
-            console.log(err.error)
+            //console.log(err) 
+            //console.log(err.error)
         });
   };
 

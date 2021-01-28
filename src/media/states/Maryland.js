@@ -23,7 +23,7 @@ class Maryland extends React.Component {
     }
     handleChange(e){
         this.setState({ currentCity: e.currentTarget.value});
-        console.log(this.state.currentCity)
+        //console.log(this.state.currentCity)
     }
 
   generateCitySelect(cities) {
@@ -57,13 +57,13 @@ class Maryland extends React.Component {
         let result = [];
         cities.forEach((city) => {
             result.push(city.city)
-            // console.log(this.state)
+            //console.log(this.state)
         });
         return this.setState({ justCities: result })
     }
 
     componentDidMount() {
-        // console.log(`${config.API_ENDPOINT}/states`)
+        //console.log(`${config.API_ENDPOINT}/states`)
         // this.separateStates(this.state.allStates)
         return fetch(`${config.API_ENDPOINT}/states`, {
             method: 'GET',
@@ -77,16 +77,16 @@ class Maryland extends React.Component {
             res.json()
           )
           .then((resJson) => {
-            //   console.log(resJson)
+            //   //console.log(resJson)
               this.setStates(resJson)
               this.seperateCurrentStateObj(this.state.allStates);
-            //   console.log("before", this.state)
+            //   //console.log("before", this.state)
               this.setCities(this.state.stateObj)
-              console.log(this.state.justCities)
-            //   console.log("after", this.state)
+              //console.log(this.state.justCities)
+            //   //console.log("after", this.state)
           })
           .catch(err => {
-            console.log('error:', err)
+            //console.log('error:', err)
           })     
     }
 
