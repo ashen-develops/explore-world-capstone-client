@@ -1,7 +1,7 @@
 import React from "react";
 import config from "../config";
 import ApiContext from "../ApiContext";
-
+import TokenService from "../services/token-service"
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -10,6 +10,7 @@ class SignUp extends React.Component {
       hidden: true,
       user: "",
       password: "",
+      loggedIn: false,
     };
   }
   static defaultProps = {
@@ -19,9 +20,14 @@ class SignUp extends React.Component {
   };
   static contextType = ApiContext;
 
-  // handleLoginSuccess = user => {
-  //     window.location = '/homePage'
-  //   }
+  componentDidMount() {
+    let currentUserId = TokenService.getUserId();
+    if (currentUserId) {
+      window.location = "/select"
+    } else if (!currentUserId) {
+      this.setState({ loggedIn: false });
+    }
+  };
 
   handleSubmit = (e) => {
     e.preventDefault();

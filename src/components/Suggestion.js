@@ -1,7 +1,4 @@
 import React from 'react'
-// import { Link } from 'react-router-dom'
-// import ApiContext from '../ApiContext'
-// import AuthApiService from "../services/auth-api-service";
 import TokenService from "../services/token-service"
 import config from "../config"
 

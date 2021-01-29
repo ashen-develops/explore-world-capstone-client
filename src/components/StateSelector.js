@@ -2,14 +2,6 @@ import React from "react";
 import config from "../config";
 import * as States from "../media/states";
 
-function ListOfStates(props) {
-  return (
-    <option key={props.key} value={props.state}>
-      {props.state}
-    </option>
-  );
-}
-
 class StateSelector extends React.Component {
   constructor(props) {
     super(props);
