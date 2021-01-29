@@ -105,6 +105,11 @@ header h1 {
   margin-bottom: 10px;
 }
 
+.logged-in-btn:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .hTitle {
   flex-direction: column;
 }
@@ -203,7 +208,6 @@ p{
 .App {
   background-color: #ffffffc5;
   box-shadow: 1px 1px 28px grey;
-
 }
 
 .vOne {

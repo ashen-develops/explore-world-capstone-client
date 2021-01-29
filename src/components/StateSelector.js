@@ -23,13 +23,13 @@ class StateSelector extends React.Component {
       result.push(state.state);
     });
     return this.setState({ just: result });
-  }
+  };
   removeDuplicates() {
     let chars = this.state.just;
     let uniqueChars = [...new Set(chars)];
 
     this.setState({ justStates: uniqueChars });
-  }
+  };
 
   componentDidMount() {
     return fetch(`${config.API_ENDPOINT}/states`, {
@@ -49,12 +49,12 @@ class StateSelector extends React.Component {
       .catch((err) => {
         //console.log("error:", err);
       });
-  }
+  };
 
   //create functions that will display appropriate State for selected state
   handleChange(e) {
     this.setState({ currentState: e.currentTarget.value });
-  }
+  };
   handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -68,7 +68,7 @@ class StateSelector extends React.Component {
       );
     });
     return result;
-  }
+  };
 
   renderSelectedState(selected) {
     if (!selected) return null;
@@ -81,7 +81,7 @@ class StateSelector extends React.Component {
         stateName={this.state.currentState}
       />
     );
-  }
+  };
 
   render() {
     return (
@@ -108,7 +108,7 @@ class StateSelector extends React.Component {
         </main>
       </div>
     );
-  }
-}
+  };
+};
 
 export default StateSelector;
