@@ -66,7 +66,7 @@ class Header extends React.Component {
             <div className="header">
                 <header>
                     <div className="headerAbove">
-                        <Link to="/"  className="homeBtn">
+                        <Link to="/select"  className="homeBtn">
                             <HomeIcon />
                         </Link>
                         <div className="hTitle">
